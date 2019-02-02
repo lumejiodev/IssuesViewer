@@ -1,1 +1,1 @@
-// export { reducer as issues } from './issues.duck';
+export issuesList from './issuesList.duck';

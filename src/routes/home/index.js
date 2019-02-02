@@ -1,11 +1,21 @@
 import { h } from 'preact';
+import { connect } from 'preact-redux';
+import { bindActionCreators } from 'redux';
+import { fetchTest } from '../../redux/ducks/issuesList.duck';
+
 import PageWrapper from '../../components/UI/PageWrapper';
 
-const Home = () => (
+const Home = ({ fetchTest }) => (
 	<PageWrapper>
 		<h1>Home</h1>
-		<p>This is the Home component.</p>
+		<p onClick={fetchTest}>This is the Home component.</p>
 	</PageWrapper>
 );
 
-export default Home;
+const mapDispatchToProps = dispatch =>
+	bindActionCreators({ fetchTest }, dispatch);
+
+export default connect(
+	null,
+	mapDispatchToProps,
+)(Home);
