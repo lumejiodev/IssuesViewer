@@ -1,11 +1,11 @@
 import { h } from 'preact';
-import style from './style';
+import PageWrapper from '../../components/UI/PageWrapper';
 
 const Home = () => (
-	<div class={style.home}>
+	<PageWrapper>
 		<h1>Home</h1>
 		<p>This is the Home component.</p>
-	</div>
+	</PageWrapper>
 );
 
 export default Home;
