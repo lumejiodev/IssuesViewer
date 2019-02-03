@@ -16,6 +16,7 @@ const ListItem = ({ item }) => {
 				labels.nodes.map(({ color, name }, index) => (
 					<Label color={color} name={name} />
 				))}
+			<a href={`/${number}`}>Details</a>
 		</div>
 	);
 };

@@ -27,7 +27,7 @@ Contents:
 - [x] implement GraphQL + Apollo Client
 - [ ] containers and components
   - [x] render all needed data on pages
-  - [ ] navigation between pages
+  - [x] navigation between pages
   - [ ] search field for issues list
   - [ ] open/closed filter for issues list
   - [ ] pagination for issues list

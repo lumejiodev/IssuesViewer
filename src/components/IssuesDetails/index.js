@@ -8,6 +8,7 @@ const Details = ({ number, issue }) => {
 	const { title, body, createdAt, closed, author, labels, comments } = issue;
 	return (
 		<div>
+			<a href="/">Back to list</a>
 			{closed && <p>CLOSED</p>}
 			<h3>
 				#{number}:{title}
