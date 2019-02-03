@@ -1,9 +1,9 @@
 import { gql } from 'apollo-boost';
 
 export const ISSUES_QUERY = gql`
-	query {
+	query FetchIssues($states: [IssueState!]) {
 		repository(owner: "facebook", name: "react") {
-			issues(last: 20) {
+			issues(last: 20, states: $states) {
 				totalCount
 				edges {
 					node {

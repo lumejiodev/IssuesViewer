@@ -1,23 +1,47 @@
 import { h } from 'preact';
 import { Query } from 'react-apollo';
-import { compose, withStateHandlers, withHandlers } from 'recompose';
+import { compose, withStateHandlers, withHandlers, withProps } from 'recompose';
 import { ISSUES_QUERY, ISSUES_SEARCH_QUERY } from './queries';
 
 import PageWrapper from '../../components/UI/PageWrapper';
 import renderList from './renderList';
 
-const Home = ({ handleSearchInput, searchQuery }) => (
+const Home = ({
+	handleOpenInput,
+	handleClosedInput,
+	handleSearchInput,
+	filterOpen,
+	filterClosed,
+	filterStates,
+	filterSearch
+}) => (
 	<PageWrapper>
 		<h1>Home</h1>
-		
-		<input type="search" onInput={handleSearchInput} />
 
-		{searchQuery ? (
-			<Query query={ISSUES_SEARCH_QUERY} variables={{ query: searchQuery }}>
+		<input type="search" onInput={handleSearchInput} />
+		<label>
+			<input
+				type="checkbox"
+				onInput={handleOpenInput}
+				disabled={filterClosed}
+			/>
+			<span>Only open</span>
+		</label>
+		<label>
+			<input
+				type="checkbox"
+				onInput={handleClosedInput}
+				disabled={filterOpen}
+			/>
+			<span>Only closed</span>
+		</label>
+
+		{filterSearch ? (
+			<Query query={ISSUES_SEARCH_QUERY} variables={{ query: filterSearch }}>
 				{renderList}
 			</Query>
 		) : (
-			<Query query={ISSUES_QUERY}>
+			<Query query={ISSUES_QUERY} variables={{ states: filterStates }}>
 				{renderList}
 			</Query>
 		)}
@@ -27,15 +51,22 @@ const Home = ({ handleSearchInput, searchQuery }) => (
 export default compose(
 	withStateHandlers(
 		{
-			QUERY_PREFIX: 'user:facebook repo:react ',
+			timeout: null,
 			searchQuery: '',
-			timeout: null
+			filterOpen: false,
+			filterClosed: false
 		},
 		{
+			setStateTimeout: () => timeout => ({ timeout }),
 			setSearchQuery: ({ QUERY_PREFIX }) => value => ({
-				searchQuery: value ? QUERY_PREFIX + value : ''
+				searchQuery: value
 			}),
-			setStateTimeout: () => timeout => ({ timeout })
+			handleOpenInput: () => ({ target: { checked } }) => ({
+				filterOpen: checked
+			}),
+			handleClosedInput: () => ({ target: { checked } }) => ({
+				filterClosed: checked
+			})
 		},
 	),
 	withHandlers({
@@ -45,5 +76,19 @@ export default compose(
 			clearTimeout(timeout);
 			setStateTimeout(setTimeout(() => setSearchQuery(value), 1000));
 		}
+	}),
+	withProps(({ filterOpen, filterClosed, searchQuery }) => {
+		const filterStates = filterOpen ? 'OPEN' : filterClosed ? 'CLOSED' : null;
+		let filterSearch = '';
+		if (searchQuery) {
+			// I have to use search hooks here
+			filterSearch = 'user:facebook repo:react ' + searchQuery;
+			if (filterOpen) filterSearch += ' state:open';
+			if (filterClosed) filterSearch += ' state:closed';
+		}
+		return {
+			filterSearch,
+			filterStates
+		};
 	}),
 )(Home);
