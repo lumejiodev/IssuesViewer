@@ -19,14 +19,21 @@ Contents:
 - Comments list
   - Comments items
 
-## Simplified to-do list
+## To-do list
 
 - [x] setup Preact boilerplate
 - [x] make routes
 - [ ] ~~make redux files (connect state and ducks)~~
 - [x] implement GraphQL + Apollo Client
-- [ ] make containers
-- [ ] make components
+- [ ] containers and components
+  - [ ] render all needed data on pages
+  - [ ] navigation between pages
+  - [ ] search field for issues list
+  - [ ] open/closed filter for issues list
+  - [ ] pagination for issues list
+  - [ ] pagination for comments list
+  - [ ] [backlog] make a queryless search/filters when total amount of issues is lower than 50
+  - [ ] clean up code
 - [ ] write unit tests
 - [ ] improve GUI
 
