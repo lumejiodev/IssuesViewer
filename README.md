@@ -26,7 +26,7 @@ Contents:
 - [ ] ~~make redux files (connect state and ducks)~~
 - [x] implement GraphQL + Apollo Client
 - [ ] containers and components
-  - [ ] render all needed data on pages
+  - [x] render all needed data on pages
   - [ ] navigation between pages
   - [ ] search field for issues list
   - [ ] open/closed filter for issues list

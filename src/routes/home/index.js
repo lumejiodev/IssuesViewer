@@ -2,17 +2,31 @@ import { h } from 'preact';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
 
-const TEST_QUERY = gql`
+import PageWrapper from '../../components/UI/PageWrapper';
+import IssuesList from '../../components/IssuesList';
+
+const ISSUES_QUERY = gql`
 	query {
 		repository(owner: "facebook", name: "react") {
-			issues(last: 20, states: CLOSED) {
+			issues(last: 20) {
 				edges {
 					node {
 						title
-						createdAt
 						number
-						state
-						url
+						createdAt
+						author {
+							login
+						}
+						comments {
+							totalCount
+						}
+						labels(last: 20) {
+							nodes {
+								color
+								name
+							}
+						}
+						closed
 					}
 				}
 			}
@@ -20,22 +34,14 @@ const TEST_QUERY = gql`
 	}
 `;
 
-import PageWrapper from '../../components/UI/PageWrapper';
-
 const Home = () => (
 	<PageWrapper>
 		<h1>Home</h1>
-		<Query query={TEST_QUERY}>
+		<Query query={ISSUES_QUERY}>
 			{({ loading, error, data }) => {
 				if (loading) return <div>Loading...</div>;
 				if (error) return <div>Error :(</div>;
-				return (
-					<ul>
-						{data.repository.issues.edges.map(item => (
-							<li>{item.node.title}</li>
-						))}
-					</ul>
-				);
+				return <IssuesList issues={data.repository.issues.edges} />;
 			}}
 		</Query>
 	</PageWrapper>
