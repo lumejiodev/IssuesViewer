@@ -22,9 +22,10 @@ Contents:
 ## Simplified to-do list
 
 - [x] setup Preact boilerplate
-- [ ] make redux files (connect state and ducks)
+- [x] make routes
+- [ ] ~~make redux files (connect state and ducks)~~
+- [x] implement GraphQL + Apollo Client
 - [ ] make containers
-- [ ] make routes
 - [ ] make components
 - [ ] write unit tests
 - [ ] improve GUI
