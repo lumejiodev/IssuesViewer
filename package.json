@@ -37,6 +37,7 @@
     "graphql-tag": "^2.10.1",
     "preact": "^8.2.6",
     "preact-compat": "^3.17.0",
+    "preact-markdown": "^0.4.1",
     "preact-router": "^2.5.7",
     "react-apollo": "^2.4.1",
     "recompose": "^0.30.0",
