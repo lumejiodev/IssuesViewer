@@ -28,7 +28,7 @@ Contents:
 - [ ] containers and components
   - [x] render all needed data on pages
   - [x] navigation between pages
-  - [ ] search field for issues list
+  - [x] search field for issues list
   - [ ] open/closed filter for issues list
   - [ ] pagination for issues list
   - [ ] pagination for comments list

@@ -1,50 +1,49 @@
 import { h } from 'preact';
-import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
+import { compose, withStateHandlers, withHandlers } from 'recompose';
+import { ISSUES_QUERY, ISSUES_SEARCH_QUERY } from './queries';
 
 import PageWrapper from '../../components/UI/PageWrapper';
-import IssuesList from '../../components/IssuesList';
+import renderList from './renderList';
 
-const ISSUES_QUERY = gql`
-	query {
-		repository(owner: "facebook", name: "react") {
-			issues(last: 20) {
-				edges {
-					node {
-						title
-						number
-						createdAt
-						author {
-							login
-						}
-						comments {
-							totalCount
-						}
-						labels(last: 20) {
-							nodes {
-								color
-								name
-							}
-						}
-						closed
-					}
-				}
-			}
-		}
-	}
-`;
-
-const Home = () => (
+const Home = ({ handleSearchInput, searchQuery }) => (
 	<PageWrapper>
 		<h1>Home</h1>
-		<Query query={ISSUES_QUERY}>
-			{({ loading, error, data }) => {
-				if (loading) return <div>Loading...</div>;
-				if (error) return <div>Error :(</div>;
-				return <IssuesList issues={data.repository.issues.edges} />;
-			}}
-		</Query>
+		
+		<input type="search" onInput={handleSearchInput} />
+
+		{searchQuery ? (
+			<Query query={ISSUES_SEARCH_QUERY} variables={{ query: searchQuery }}>
+				{renderList}
+			</Query>
+		) : (
+			<Query query={ISSUES_QUERY}>
+				{renderList}
+			</Query>
+		)}
 	</PageWrapper>
 );
 
-export default Home;
+export default compose(
+	withStateHandlers(
+		{
+			QUERY_PREFIX: 'user:facebook repo:react ',
+			searchQuery: '',
+			timeout: null
+		},
+		{
+			setSearchQuery: ({ QUERY_PREFIX }) => value => ({
+				searchQuery: value ? QUERY_PREFIX + value : ''
+			}),
+			setStateTimeout: () => timeout => ({ timeout })
+		},
+	),
+	withHandlers({
+		handleSearchInput: ({ timeout, setStateTimeout, setSearchQuery }) => ({
+			target: { value }
+		}) => {
+			clearTimeout(timeout);
+			setStateTimeout(setTimeout(() => setSearchQuery(value), 1000));
+		}
+	}),
+)(Home);
