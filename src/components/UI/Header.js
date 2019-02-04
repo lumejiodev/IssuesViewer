@@ -1,9 +1,9 @@
 import { h } from 'preact';
 import styled from 'styled-components';
 
-const Header = () => (
+const Header = ({ title }) => (
 	<AppHeaderWrapper>
-		<AppHeader>GitHub Issues Viewer</AppHeader>
+		<AppHeader>{title}</AppHeader>
 	</AppHeaderWrapper>
 );
 

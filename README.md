@@ -25,7 +25,7 @@ Contents:
 - [x] make routes
 - [ ] ~~make redux files (connect state and ducks)~~
 - [x] implement GraphQL + Apollo Client
-- [ ] containers and components
+- [x] containers and components
   - [x] render all needed data on pages
   - [x] navigation between pages
   - [x] search field for issues list
@@ -33,7 +33,7 @@ Contents:
   - [x] pagination for issues list
   - [x] pagination for comments list
   - [ ] [backlog] make a queryless search/filters when total amount of issues is lower than 50
-  - [ ] clean up code
+  - [x] clean up code
 - [ ] write unit tests
 - [ ] improve GUI
 

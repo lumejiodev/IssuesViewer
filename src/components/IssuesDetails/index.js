@@ -1,8 +1,8 @@
 import { h } from 'preact';
 
 import Label from '../UI/Label';
-import Comments from './IssuesComments';
-import OwnerComment from './IssuesOwnerComment';
+import CommentsList from './CommentsList';
+import AuthorComment from './AuthorComment';
 
 const Details = props => {
 	const { number, issue } = props;
@@ -19,8 +19,8 @@ const Details = props => {
 			{labels.nodes.map(({ color, name }) => (
 				<Label color={color} name={name} />
 			))}
-			<OwnerComment createdAt={createdAt} body={body} author={author} />
-			<Comments comments={comments} {...props} />
+			<AuthorComment createdAt={createdAt} body={body} author={author} />
+			<CommentsList comments={comments} {...props} />
 		</div>
 	);
 };

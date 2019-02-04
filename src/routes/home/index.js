@@ -73,6 +73,7 @@ export default compose(
 		handleSearchInput: ({ timeout, setStateTimeout, setSearchQuery }) => ({
 			target: { value }
 		}) => {
+			// searchQuery updates when user stops typing in the search field
 			clearTimeout(timeout);
 			setStateTimeout(setTimeout(() => setSearchQuery(value), 1000));
 		}

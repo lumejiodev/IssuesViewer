@@ -1,5 +1,5 @@
 {
-  "name": "GitHubIssues",
+  "name": "GitHub Issues Viewer",
   "short_name": "GitHubIssues",
   "start_url": "/",
   "display": "standalone",

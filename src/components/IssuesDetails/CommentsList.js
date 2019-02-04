@@ -11,7 +11,7 @@ import {
 
 import Comment from '../UI/Comment';
 
-const Comments = ({ comments, handleFetchMoreClick }) => {
+const CommentsList = ({ comments, handleFetchMoreClick }) => {
 	const {
 		pageInfo: { hasNextPage }
 	} = comments;
@@ -72,4 +72,4 @@ export default withHandlers({
 			}
 		});
 	}
-})(Comments);
+})(CommentsList);

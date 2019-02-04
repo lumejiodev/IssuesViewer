@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import ListItem from './IssuesListItem';
+import ListItem from './ListItem';
 
 const List = ({ issues }) => (
 	<ul>
