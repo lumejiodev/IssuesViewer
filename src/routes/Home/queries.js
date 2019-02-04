@@ -1,10 +1,22 @@
 import { gql } from 'apollo-boost';
 
 export const ISSUES_QUERY = gql`
-	query FetchIssues($states: [IssueState!]) {
+	query FetchIssues($states: [IssueState!], $before: String, $after: String) {
 		repository(owner: "facebook", name: "react") {
-			issues(last: 20, states: $states) {
+			issues(
+				first: 20
+				orderBy: { field: CREATED_AT, direction: DESC }
+				states: $states
+				before: $before
+				after: $after
+			) {
 				totalCount
+				pageInfo {
+					startCursor
+					endCursor
+					hasNextPage
+					hasPreviousPage
+				}
 				edges {
 					node {
 						title
@@ -16,7 +28,7 @@ export const ISSUES_QUERY = gql`
 						comments {
 							totalCount
 						}
-						labels(last: 20) {
+						labels(first: 20) {
 							nodes {
 								color
 								name
@@ -31,9 +43,21 @@ export const ISSUES_QUERY = gql`
 `;
 
 export const ISSUES_SEARCH_QUERY = gql`
-	query SearchIssues($query: String!) {
-		search(type: ISSUE, query: $query, last: 20) {
+	query SearchIssues($query: String!, $before: String, $after: String) {
+		search(
+			type: ISSUE
+			first: 20
+			query: $query
+			before: $before
+			after: $after
+		) {
 			issueCount
+			pageInfo {
+				startCursor
+				endCursor
+				hasNextPage
+				hasPreviousPage
+			}
 			edges {
 				node {
 					... on Issue {
@@ -46,7 +70,7 @@ export const ISSUES_SEARCH_QUERY = gql`
 						comments {
 							totalCount
 						}
-						labels(last: 20) {
+						labels(first: 20) {
 							nodes {
 								color
 								name

@@ -82,7 +82,7 @@ export default compose(
 		let filterSearch = '';
 		if (searchQuery) {
 			// I have to use search hooks here
-			filterSearch = 'user:facebook repo:react ' + searchQuery;
+			filterSearch = searchQuery + ' repo:facebook/react';
 			if (filterOpen) filterSearch += ' state:open';
 			if (filterClosed) filterSearch += ' state:closed';
 		}

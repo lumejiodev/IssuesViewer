@@ -30,7 +30,7 @@ Contents:
   - [x] navigation between pages
   - [x] search field for issues list
   - [x] open/closed filter for issues list
-  - [ ] pagination for issues list
+  - [x] pagination for issues list
   - [ ] pagination for comments list
   - [ ] [backlog] make a queryless search/filters when total amount of issues is lower than 50
   - [ ] clean up code
