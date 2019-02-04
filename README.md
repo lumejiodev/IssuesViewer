@@ -57,3 +57,10 @@ yarn run test
 ```
 
 For detailed explanation on how things work, checkout the [CLI Readme](https://github.com/developit/preact-cli/blob/master/README.md).
+
+## GitHub API Token
+
+1. Duplicate `.env.sample` file and make it `.env`
+1. Visit https://github.com/settings/tokens
+1. Generate new key with `public_repo` scope checked
+1. Copy this key into `.env` file (as a `PREACT_APP_GITHUB_TOKEN`)
