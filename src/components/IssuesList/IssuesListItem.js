@@ -12,10 +12,9 @@ const ListItem = ({ item }) => {
 			<p>Author: {author.login}</p>
 			<p>Created: {createdAt}</p>
 			<p>Comments: {comments.totalCount}</p>
-			{labels.nodes.length > 0 &&
-				labels.nodes.map(({ color, name }, index) => (
-					<Label color={color} name={name} />
-				))}
+			{labels.nodes.map(({ color, name }) => (
+				<Label color={color} name={name} />
+			))}
 			<a href={`/${number}`}>Details</a>
 		</div>
 	);

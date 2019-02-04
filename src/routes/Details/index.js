@@ -1,51 +1,25 @@
 import { h } from 'preact';
-import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
+import { ISSUE_QUERY, ISSUE_COMMENTS_QUERY } from './queries';
 
 import PageWrapper from '../../components/UI/PageWrapper';
 import IssueDetails from '../../components/IssuesDetails';
 
-const ISSUE_QUERY = gql`
-	query Issue($number: Int!) {
-		repository(owner: "facebook", name: "react") {
-			issue(number: $number) {
-				title
-				body
-				createdAt
-				closed
-				author {
-					login
-				}
-				labels(last: 20) {
-					nodes {
-						color
-						name
-					}
-				}
-				comments(last: 20) {
-					totalCount
-					edges {
-						node {
-							author {
-								login
-							}
-							body
-							createdAt
-						}
-					}
-				}
-			}
-		}
-	}
-`;
-
 const Details = ({ matches: { id } }) => (
 	<PageWrapper>
 		<Query query={ISSUE_QUERY} variables={{ number: Number(id) }}>
-			{({ loading, error, data }) => {
+			{props => {
+				const { loading, error, data } = props;
 				if (loading) return <div>Loading...</div>;
 				if (error) return <div>Error :(</div>;
-				return <IssueDetails number={id} issue={data.repository.issue} />;
+				return (
+					<IssueDetails
+						number={id}
+						issue={data.repository.issue}
+						commentsQuery={ISSUE_COMMENTS_QUERY}
+						{...props}
+					/>
+				);
 			}}
 		</Query>
 	</PageWrapper>
