@@ -37,7 +37,7 @@ Contents:
 - [x] write unit tests
   - [x] components
   - [x] integration or e2e
-- [ ] improve GUI
+- [x] improve GUI
 
 ## CLI Commands
 

@@ -10,6 +10,7 @@ import {
 } from 'ramda';
 
 import Comment from '../UI/Comment';
+import Button from '../UI/Button';
 
 const CommentsList = ({ comments, handleFetchMoreClick }) => {
 	const {
@@ -21,7 +22,7 @@ const CommentsList = ({ comments, handleFetchMoreClick }) => {
 				<Comment item={node} />
 			))}
 			{hasNextPage && (
-				<button onClick={handleFetchMoreClick}>Fetch More</button>
+				<Button onClick={handleFetchMoreClick} text="Fetch More" />
 			)}
 		</div>
 	);

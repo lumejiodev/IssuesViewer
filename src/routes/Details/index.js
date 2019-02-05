@@ -4,10 +4,12 @@ import { ISSUE_QUERY, ISSUE_COMMENTS_QUERY } from './queries';
 
 import PageWrapper from '../../components/UI/PageWrapper';
 import IssueDetails from '../../components/IssuesDetails';
+import { AnchorButton } from '../../components/UI/Button';
 
 const Details = ({ matches: { id } }) => (
 	<PageWrapper>
-		<h1>Details of issue</h1>
+		<h1>Details of the issue</h1>
+		<AnchorButton href="/" text="Back to list" />
 		<Query query={ISSUE_QUERY} variables={{ number: Number(id) }}>
 			{props => {
 				const { loading, error, data } = props;
