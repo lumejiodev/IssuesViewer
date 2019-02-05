@@ -8,7 +8,7 @@ const Details = props => {
 	const { number, issue } = props;
 	const { title, body, createdAt, closed, author, labels, comments } = issue;
 	return (
-		<div>
+		<div data-qa-issues-list-details>
 			<a href="/">Back to list</a>
 			{closed && <p>CLOSED</p>}
 			<h3>

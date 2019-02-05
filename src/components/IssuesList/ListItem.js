@@ -4,7 +4,7 @@ import Label from '../UI/Label';
 const ListItem = ({ item }) => {
 	const { author, closed, comments, createdAt, labels, number, title } = item;
 	return (
-		<div>
+		<div data-qa-issues-list-item>
 			{closed && <p>CLOSED</p>}
 			<p>
 				#{number}: {title}
