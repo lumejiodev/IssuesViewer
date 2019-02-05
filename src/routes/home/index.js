@@ -4,6 +4,8 @@ import { compose, withStateHandlers, withHandlers, withProps } from 'recompose';
 import { ISSUES_QUERY, ISSUES_SEARCH_QUERY } from './queries';
 
 import PageWrapper from '../../components/UI/PageWrapper';
+import SearchField from '../../components/UI/SearchField';
+import Checkbox from '../../components/UI/Checkbox';
 import renderList from './renderList';
 
 const Home = ({
@@ -16,25 +18,23 @@ const Home = ({
 	filterSearch
 }) => (
 	<PageWrapper>
-		<h1>Home</h1>
+		<h1>List of issues</h1>
 
-		<input type="search" onInput={handleSearchInput} />
-		<label>
-			<input
-				type="checkbox"
-				onInput={handleOpenInput}
-				disabled={filterClosed}
-			/>
-			<span>Only open</span>
-		</label>
-		<label>
-			<input
-				type="checkbox"
-				onInput={handleClosedInput}
-				disabled={filterOpen}
-			/>
-			<span>Only closed</span>
-		</label>
+		<SearchField
+			type="text"
+			placeholder="Search query..."
+			onInput={handleSearchInput}
+		/>
+		<Checkbox
+			onInput={handleOpenInput}
+			disabled={filterClosed}
+			label="Only open"
+		/>
+		<Checkbox
+			onInput={handleClosedInput}
+			disabled={filterOpen}
+			label="Only closed"
+		/>
 
 		{filterSearch ? (
 			<Query query={ISSUES_SEARCH_QUERY} variables={{ query: filterSearch }}>

@@ -7,6 +7,7 @@ import IssueDetails from '../../components/IssuesDetails';
 
 const Details = ({ matches: { id } }) => (
 	<PageWrapper>
+		<h1>Details of issue</h1>
 		<Query query={ISSUE_QUERY} variables={{ number: Number(id) }}>
 			{props => {
 				const { loading, error, data } = props;

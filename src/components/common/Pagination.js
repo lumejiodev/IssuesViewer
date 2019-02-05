@@ -1,5 +1,6 @@
 import { h } from 'preact';
 import { compose, withHandlers } from 'recompose';
+import Button from '../UI/Button';
 
 const Pagination = ({
 	pageInfo: { hasNextPage, hasPreviousPage },
@@ -7,10 +8,10 @@ const Pagination = ({
 	handleClickPrevious
 }) => (
 	<div>
-		{hasNextPage && (
-			<button onClick={handleClickNext}>Previous Page</button>
+		{hasNextPage && <Button onClick={handleClickNext} text="Previous Page" />}
+		{hasPreviousPage && (
+			<Button onClick={handleClickPrevious} text="Next Page" />
 		)}
-		{hasPreviousPage && <button onClick={handleClickPrevious}>Next Page</button>}
 	</div>
 );
 

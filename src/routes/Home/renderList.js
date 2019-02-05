@@ -3,10 +3,12 @@ import { filter } from 'ramda';
 
 import IssuesList from '../../components/IssuesList';
 import Pagination from '../../components/common/Pagination';
+import TotalCount from '../../components/common/TotalCount';
+import Preloader from '../../components/common/Preloader';
 
 const renderList = props => {
 	const { loading, error, data } = props;
-	if (loading) return <div>Loading...</div>;
+	if (loading) return <Preloader />;
 	if (error) return <div>Error :(</div>;
 	const issues = data.search || data.repository.issues;
 	// Search query sometimes returns empty edges
@@ -15,7 +17,7 @@ const renderList = props => {
 	const totalCount = issues.totalCount || issues.issueCount;
 	return (
 		<div>
-			<p>Total count: {totalCount}</p>
+			<TotalCount totalCount={totalCount} />
 			<IssuesList issues={edges} />
 			<Pagination pageInfo={issues.pageInfo} {...props} />
 		</div>

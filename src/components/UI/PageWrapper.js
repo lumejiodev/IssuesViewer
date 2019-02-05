@@ -2,7 +2,9 @@ import { h } from 'preact';
 import styled from 'styled-components';
 
 export default styled.div`
-	padding: 56px 20px;
+	width: 90%;
 	min-height: 100%;
-	width: 100%;
+	max-width: 900px;
+	padding: 56px 20px;
+	margin: 0 auto;
 `;

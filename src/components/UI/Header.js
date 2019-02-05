@@ -10,23 +10,24 @@ const Header = ({ title }) => (
 export default Header;
 
 const AppHeaderWrapper = styled.div`
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 56px;
-  padding: 0;
-  background: #673ab7;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  z-index: 50;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 56px;
+	padding: 0;
+	background: #00d1b2;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+	z-index: 50;
 `;
 
 const AppHeader = styled.h1`
-  float: left;
-  margin: 0;
-  padding: 0 15px;
-  font-size: 24px;
-  line-height: 56px;
-  font-weight: 400;
-  color: #fff;
+  width: 90%;
+  max-width: 900px;
+	margin: 0 auto;
+	padding: 0 15px;
+	font-size: 24px;
+	line-height: 56px;
+	font-weight: 400;
+	color: #fff;
 `;
