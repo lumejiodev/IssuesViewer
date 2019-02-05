@@ -13,7 +13,9 @@ describe('Home page', () => {
 
 	it('renders all issues items', async () => {
 		await wait(0); // wait for response
-		expect(context.find('[data-qa-issues-list-item]').length).toBe(2);
+		expect(
+			context.find('[data-qa-issues-list-item]').filter('div').length,
+		).toBe(2);
 	});
 
 	it('should have a link to issue details', async () => {

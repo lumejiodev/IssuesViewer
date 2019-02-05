@@ -6,7 +6,7 @@ const detailsMock = {
 	issue: {
 		title: 'Issue title',
 		body: 'Issue body',
-		createdAt: '02/02',
+		createdAt: '2019-04-01T12:00:00.000Z',
 		closed: true,
 		author: {
 			login: 'AuthorLogin'

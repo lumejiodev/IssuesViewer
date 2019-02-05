@@ -6,24 +6,24 @@ const itemMock = {
 	author: {
 		login: 'Mikhail'
 	},
-	createdAt: '01.12'
+	createdAt: '2019-04-01T12:00:00.000Z'
 };
 
 describe('Comment component', () => {
 	const context = deep(<Comment item={itemMock} />);
-	
+
 	it('renders provided data', () => {
 		expect(
 			context
-				.find('p')
+				.find('span')
 				.at(0)
-				.contains('Author: Mikhail'),
+				.contains('Mikhail'),
 		).toBeTruthy();
 		expect(
 			context
-				.find('p')
+				.find('span')
 				.at(1)
-				.contains('Created at: 01.12'),
+				.contains('01.04.2019'),
 		).toBeTruthy();
 	});
 

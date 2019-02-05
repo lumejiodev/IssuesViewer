@@ -6,7 +6,7 @@ const commentMock = {
 	author: {
 		login: 'AuthorLogin'
 	},
-	createdAt: '02/02'
+	createdAt: '2019-04-01T12:00:00.000Z'
 };
 
 describe('AuthorComment component', () => {
