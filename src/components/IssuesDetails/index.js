@@ -50,6 +50,7 @@ const Wrapper = styled.div`
 
 const TopBar = styled.div`
 	display: flex;
+	flex-wrap: wrap;
 	font-weight: bold;
 	div {
 		margin-right: 14px;

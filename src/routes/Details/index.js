@@ -4,6 +4,7 @@ import { ISSUE_QUERY, ISSUE_COMMENTS_QUERY } from './queries';
 
 import PageWrapper from '../../components/UI/PageWrapper';
 import IssueDetails from '../../components/IssuesDetails';
+import Preloader from '../../components/common/Preloader';
 import { AnchorButton } from '../../components/UI/Button';
 
 const Details = ({ matches: { id } }) => (
@@ -13,7 +14,7 @@ const Details = ({ matches: { id } }) => (
 		<Query query={ISSUE_QUERY} variables={{ number: Number(id) }}>
 			{props => {
 				const { loading, error, data } = props;
-				if (loading) return <div>Loading...</div>;
+				if (loading) return <Preloader />;
 				if (error) return <div>Error :(</div>;
 				return (
 					<IssueDetails

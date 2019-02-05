@@ -11,10 +11,10 @@ const Checkbox = ({ label, ...rest }) => (
 export default Checkbox;
 
 const Input = styled.input`
-  width: 18px;
-  height: 18px;
+	width: 18px;
+	height: 18px;
 	transition: opacity 0.4s;
-  vertical-align: middle;
+	vertical-align: middle;
 
 	:disabled,
 	:disabled + span {
@@ -23,11 +23,16 @@ const Input = styled.input`
 `;
 
 const Label = styled.label`
-  margin-left: 1em;
-  vertical-align: middle;
+	margin-left: 1em;
+	vertical-align: middle;
+
+	@media (max-width: 570px) {
+		margin-left: 0;
+		margin-right: 1em;
+	}
 `;
 
 const LabelText = styled.span`
-  vertical-align: middle;
+	vertical-align: middle;
 	transition: opacity 0.4s;
 `;

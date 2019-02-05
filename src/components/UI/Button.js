@@ -23,6 +23,10 @@ const buttonStyles = css`
 	box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
 	transition: 0.4s;
 
+	&:last-child {
+		margin-right: 0;
+	}
+
 	&:hover {
 		box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
 	}

@@ -22,8 +22,8 @@ const AppHeaderWrapper = styled.div`
 `;
 
 const AppHeader = styled.h1`
-  width: 90%;
-  max-width: 900px;
+  width: 94%;
+  max-width: 920px;
 	margin: 0 auto;
 	padding: 0 15px;
 	font-size: 24px;
