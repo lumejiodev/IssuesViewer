@@ -35,6 +35,8 @@ Contents:
   - [ ] [backlog] make a queryless search/filters when total amount of issues is lower than 50
   - [x] clean up code
 - [ ] write unit tests
+  - [x] components
+  - [ ] integration or e2e
 - [ ] improve GUI
 
 ## CLI Commands
